@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useId, useState } from "react";
 import { cn } from "@/lib/cn";
+import { asset } from "@/content/site";
 
 type Mode = "gradcam" | "adversarial";
 
@@ -19,11 +20,11 @@ export function XaiSlider() {
     <figure className="relative">
       <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-bg/60 select-none">
         {/* base image */}
-        <Image src="/sketch.jpg" alt="" fill sizes="(min-width: 1024px) 560px, 90vw" className="object-cover" />
+        <Image src={asset("/sketch.jpg")} alt="" fill sizes="(min-width: 1024px) 560px, 90vw" className="object-cover" />
 
         {/* processed layer, clipped */}
         <div className="absolute inset-0" style={{ clipPath: `inset(0 0 0 ${pos}%)` }} aria-hidden>
-          <Image src="/sketch.jpg" alt="" fill sizes="(min-width: 1024px) 560px, 90vw" className={cn("object-cover", mode === "gradcam" ? "grayscale contrast-125 brightness-75" : "")} />
+          <Image src={asset("/sketch.jpg")} alt="" fill sizes="(min-width: 1024px) 560px, 90vw" className={cn("object-cover", mode === "gradcam" ? "grayscale contrast-125 brightness-75" : "")} />
           {mode === "gradcam" ? (
             <>
               <div

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { site } from "@/content/site";
+import { asset, site } from "@/content/site";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { DetectionBox } from "@/components/effects/DetectionBox";
@@ -43,7 +43,7 @@ export function About() {
             <DetectionBox label="engineer" confidence={0.99} accent="cyan" className="rounded-2xl">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                 <Image
-                  src={site.photo}
+                  src={asset(site.photo)}
                   alt={`Portrait of ${site.name}`}
                   fill
                   sizes="(min-width: 1024px) 420px, 90vw"

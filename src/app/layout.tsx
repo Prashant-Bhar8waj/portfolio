@@ -30,11 +30,13 @@ export const metadata: Metadata = {
     description: site.seo.description,
     siteName: site.name,
     locale: "en_US",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: site.seo.title }],
   },
   twitter: {
     card: "summary_large_image",
     title: site.seo.title,
     description: site.seo.description,
+    images: ["/og.png"],
   },
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },

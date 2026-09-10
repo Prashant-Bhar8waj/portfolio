@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { nav, site } from "@/content/site";
 
 export function Footer() {
@@ -11,13 +12,13 @@ export function Footer() {
           </p>
           <p className="mt-2 font-mono text-[11px] text-muted">
             Machine-readable:{" "}
-            <a className="hover:text-cyan" href="/llms.txt">
+            <Link className="hover:text-cyan" href="/llms.txt">
               /llms.txt
-            </a>{" "}
+            </Link>{" "}
             ·{" "}
-            <a className="hover:text-cyan" href="/resume.json">
+            <Link className="hover:text-cyan" href="/resume.json">
               /resume.json
-            </a>
+            </Link>
           </p>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-2">

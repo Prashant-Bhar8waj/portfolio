@@ -28,6 +28,7 @@ Static assets:
 
 - `public/prashant.jpg`: portrait used in About
 - `public/sketch.jpg`: drawing used in the explainability slider
+- `public/og.png`: Open Graph preview image
 
 Before deploying, set `site.url` in `src/content/site.ts` to the real domain. It feeds the sitemap, robots, Open Graph tags, JSON-LD and the machine-readable endpoints.
 
@@ -35,14 +36,14 @@ Before deploying, set `site.url` in `src/content/site.ts` to the real domain. It
 
 - `/llms.txt`: plain-text profile for AI agents and crawlers
 - `/resume.json`: structured résumé (JSON Resume-style)
-- `/sitemap.xml`, `/robots.txt`, `/opengraph-image`: generated from content
+- `/sitemap.xml`, `/robots.txt`: generated from content; `/og.png` is the static Open Graph image
 - JSON-LD `Person` schema is embedded in the page
 
 ## Structure
 
 ```
 src/
-  app/               layout, page, metadata routes (sitemap, robots, OG image, llms.txt, resume.json)
+  app/               layout, page, metadata routes (sitemap, robots, llms.txt, resume.json)
   components/
     hero/            Hero + HeroVisual (canvas point-cloud rig, no Three.js)
     sections/        About, Skills, Journey, Achievements
@@ -62,4 +63,14 @@ src/
 
 ## Deploy
 
-Any Next.js host works. On Vercel: import the repo and deploy.
+The site is a static export (`output: "export"` in `next.config.ts`).
+
+**GitHub Pages (configured).** Every push to `main` runs `.github/workflows/deploy.yml`, which builds with `NEXT_PUBLIC_BASE_PATH=/<repo-name>` and publishes the `out/` folder. One-time setup in the repository: Settings, Pages, Source: "GitHub Actions". The site then lives at `https://<user>.github.io/<repo-name>/`. If you rename the repo, update `site.url` in `src/content/site.ts`.
+
+**Custom domain or Vercel.** Leave `NEXT_PUBLIC_BASE_PATH` unset so paths resolve from the root, and set `site.url` to the domain.
+
+Local check of the Pages build:
+
+```bash
+NEXT_PUBLIC_BASE_PATH=/portfolio npm run build && npx serve out
+```

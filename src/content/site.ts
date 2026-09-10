@@ -1,6 +1,10 @@
 /**
  * Single source of truth for personal details. Edit here, not in components.
  */
+
+/** Prefix a public/ asset path with the deployment base path (set for GitHub Pages). */
+export const asset = (path: string) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
+
 export const site = {
   name: "Prashant Bhardwaj",
   role: "AI & Computer Vision Engineer",
@@ -10,7 +14,7 @@ export const site = {
   statusBadge: "Open to AI & Computer Vision Opportunities",
   location: "Saarbrücken, Germany",
   email: "prashant.bhar8waj@gmail.com",
-  url: "https://prashantbhardwaj.dev", // update to the deployed domain
+  url: "https://prashant-bhar8waj.github.io/portfolio", // GitHub Pages URL; change if you add a custom domain
   photo: "/prashant.jpg",
   links: {
     linkedin: "https://www.linkedin.com/in/prashant-bhar8waj/",
