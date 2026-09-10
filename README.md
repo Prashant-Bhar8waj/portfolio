@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prashant Bhardwaj: Portfolio
 
-## Getting Started
+Personal portfolio for Prashant Bhardwaj, AI and Computer Vision Engineer. Built with Next.js (App Router), React, TypeScript, Tailwind CSS v4 and Framer Motion. The visual concept, "Through the Eyes of AI", frames the site as the view of a computer-vision system: detection boxes, a scanning cursor, a five-camera point-cloud rig in the hero, and interactive case-study visualizations.
 
-First, run the development server:
+## Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run start
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where to edit content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Everything personal lives in `src/content/`. Components read from these files, so updating the site rarely requires touching a component.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| File | What it holds |
+|---|---|
+| `src/content/site.ts` | Name, headline, tagline, status badge, email, links, SEO metadata, deployed URL, navigation |
+| `src/content/projects.ts` | The five case studies (problem / approach / architecture / results / contribution), stats, tags, links |
+| `src/content/skills.ts` | Skill layers and which projects each skill was used in (drives the hover highlighting) |
+| `src/content/journey.ts` | Timeline milestones |
+| `src/content/achievements.ts` | Thesis, publications, awards, scholarships |
 
-## Learn More
+Static assets:
 
-To learn more about Next.js, take a look at the following resources:
+- `public/prashant.jpg`: portrait used in About
+- `public/sketch.jpg`: drawing used in the explainability slider
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Before deploying, set `site.url` in `src/content/site.ts` to the real domain. It feeds the sitemap, robots, Open Graph tags, JSON-LD and the machine-readable endpoints.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Machine-readable endpoints
 
-## Deploy on Vercel
+- `/llms.txt`: plain-text profile for AI agents and crawlers
+- `/resume.json`: structured résumé (JSON Resume-style)
+- `/sitemap.xml`, `/robots.txt`, `/opengraph-image`: generated from content
+- JSON-LD `Person` schema is embedded in the page
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+  app/               layout, page, metadata routes (sitemap, robots, OG image, llms.txt, resume.json)
+  components/
+    hero/            Hero + HeroVisual (canvas point-cloud rig, no Three.js)
+    sections/        About, Skills, Journey, Achievements
+    projects/        Projects list, CaseStudy (tabs), visuals/ (one interactive figure per project)
+    layout/          Nav, Footer
+    effects/         ScanCursor, DetectionBox
+    ui/              Reveal, SectionHeader, Button
+  content/           all editable data
+  lib/               helpers (motion variants, class utils, reduced-motion hook)
+```
+
+## Accessibility and motion
+
+- All interactive figures work with keyboard focus (tabs use roving focus and arrow keys; SVG nodes are focusable buttons; the comparison slider is a native range input).
+- `prefers-reduced-motion` disables the auto-orbit, particle flows, cursor and entrance motion; content remains fully visible.
+- Skip link, semantic landmarks, and `sr-only` tables/captions for the visualizations.
+
+## Deploy
+
+Any Next.js host works. On Vercel: import the repo and deploy.

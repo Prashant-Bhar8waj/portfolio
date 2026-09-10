@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# personal source documents (not part of the site)
+thesis.pdf
+CV.pdf
+1693300596939.jpeg
+New.jpg
