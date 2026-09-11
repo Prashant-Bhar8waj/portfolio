@@ -14,9 +14,9 @@ export const skillLayers: SkillLayer[] = [
     label: "Vision",
     accent: "cyan",
     skills: [
-      { name: "OpenCV", usedIn: ["lightweight", "mlops"] },
-      { name: "Object detection", usedIn: ["lightweight"] },
-      { name: "Classification", usedIn: ["lightweight", "xai", "mlops"] },
+      { name: "OpenCV", usedIn: ["mlops"] },
+      { name: "Object detection", usedIn: [] },
+      { name: "Classification", usedIn: ["xai", "mlops"] },
       { name: "Anomaly detection", usedIn: ["lumina", "cross-view"] },
       { name: "Multi-view learning", usedIn: ["lumina", "cross-view"] },
       { name: "Camera calibration & 3D", usedIn: ["lumina"] },
@@ -27,11 +27,11 @@ export const skillLayers: SkillLayer[] = [
     label: "Deep Learning",
     accent: "violet",
     skills: [
-      { name: "PyTorch", usedIn: ["lumina", "cross-view", "lightweight", "xai", "mlops"] },
-      { name: "CNNs", usedIn: ["lightweight", "xai"] },
+      { name: "PyTorch", usedIn: ["lumina", "cross-view", "xai", "mlops"] },
+      { name: "CNNs", usedIn: ["xai"] },
       { name: "Vision Transformers", usedIn: ["lumina", "cross-view"] },
       { name: "DINOv2", usedIn: ["lumina", "cross-view"] },
-      { name: "Attention mechanisms", usedIn: ["lumina", "cross-view", "lightweight"] },
+      { name: "Attention mechanisms", usedIn: ["lumina", "cross-view"] },
     ],
   },
   {
@@ -39,11 +39,11 @@ export const skillLayers: SkillLayer[] = [
     label: "Engineering",
     accent: "orange",
     skills: [
-      { name: "Python", usedIn: ["lumina", "cross-view", "lightweight", "xai", "mlops"] },
-      { name: "C++", usedIn: ["lightweight"] },
-      { name: "Linux", usedIn: ["lumina", "lightweight", "mlops"] },
-      { name: "Docker", usedIn: ["lightweight", "mlops"] },
-      { name: "Git", usedIn: ["lumina", "cross-view", "lightweight", "xai", "mlops"] },
+      { name: "Python", usedIn: ["lumina", "cross-view", "xai", "mlops"] },
+      { name: "C++", usedIn: [] },
+      { name: "Linux", usedIn: ["lumina", "mlops"] },
+      { name: "Docker", usedIn: ["mlops"] },
+      { name: "Git", usedIn: ["lumina", "cross-view", "xai", "mlops"] },
     ],
   },
   {
@@ -54,7 +54,7 @@ export const skillLayers: SkillLayer[] = [
       { name: "AWS", usedIn: ["mlops"] },
       { name: "SageMaker", usedIn: ["mlops"] },
       { name: "CI/CD", usedIn: ["mlops"] },
-      { name: "Model deployment", usedIn: ["lightweight", "mlops"] },
+      { name: "Model deployment", usedIn: ["mlops"] },
     ],
   },
   {
@@ -63,7 +63,7 @@ export const skillLayers: SkillLayer[] = [
     accent: "violet",
     skills: [
       { name: "Experimentation", usedIn: ["lumina", "cross-view", "xai"] },
-      { name: "Evaluation", usedIn: ["lumina", "cross-view", "lightweight"] },
+      { name: "Evaluation", usedIn: ["lumina", "cross-view"] },
       { name: "Explainability", usedIn: ["xai", "lumina"] },
       { name: "Robustness", usedIn: ["xai"] },
     ],

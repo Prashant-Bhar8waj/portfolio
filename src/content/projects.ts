@@ -1,9 +1,4 @@
-export type ProjectId =
-  | "lumina"
-  | "cross-view"
-  | "lightweight"
-  | "xai"
-  | "mlops";
+export type ProjectId = "lumina" | "cross-view" | "xai" | "mlops";
 
 export type CaseSection = {
   title: string;
@@ -82,11 +77,11 @@ export const projects: Project[] = [
     id: "cross-view",
     index: "02",
     title: "Cross-View Transformer",
-    kicker: "Attention that respects geometry",
+    kicker: "Epipolar attention with soft Gaussian masking",
     summary:
       "The attention core of LUMINA: a query patch in one view attends only to patches along its epipolar line in another view, weighted by distance to the line, so cross-view reasoning happens where a true correspondence can physically exist.",
     accent: "violet",
-    tags: ["Vision Transformer", "Multi-view fusion", "Gated residuals", "Foreground attention"],
+    tags: ["Epipolar attention", "Soft Gaussian mask", "Vision Transformer", "Multi-view fusion", "Gated residuals"],
     stats: [
       { label: "Attention cost", value: "−46–57%" },
       { label: "Complexity", value: "O(N·k)" },
@@ -108,6 +103,14 @@ export const projects: Project[] = [
         ],
       },
       {
+        title: "Architecture",
+        body: [
+          "Epipolar attention with soft Gaussian masking. For a query patch q in camera i, the fundamental matrix F_ij maps its centre to the epipolar line l_q in camera j. Every key patch k in camera j gets a weight w_qk = exp(−d(k, l_q)² / 2σ²), where d is the perpendicular distance from the patch centre to the line. Patches farther than the threshold φ are dropped before any attention score is computed, so the valid keys for one query form a narrow band around the line.",
+          "Only those valid (q, k) pairs are scored: s_qk = (q·k / √d_h) · w_qk, normalized with a segment-wise softmax over each query's own keys. This turns dense O(N²) cross-view attention into sparse O(N·k) attention, with k typically 43 to 54% of the patches, and cuts attention compute by 46 to 57%. Fundamental matrices are precomputed for all twelve calibrated camera pairs, and the Gaussian keeps the mask differentiable and tolerant to calibration error.",
+          "The refined cross-view feature is merged back through a learned gate, Z″ = g ⊙ Z′ + (1 − g) ⊙ Z, so an occluded or noisy view can be ignored, and foreground attention pools the 256 patches of each view into one embedding.",
+        ],
+      },
+      {
         title: "Results",
         body: [
           "The multi-view necessity test isolates the effect of the architecture: with identical backbone and labels, fusion lifts average AUROC from 69.51% to 97.17% (+27.66 pp). Largest gains on angle-dependent defects: regulator +44.45 pp, bottle cap +42.91 pp, woodstick +41.27 pp.",
@@ -123,53 +126,8 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "lightweight",
-    index: "03",
-    title: "Lightweight Industrial Classification",
-    kicker: "Accuracy per parameter, on the production line",
-    summary:
-      "Compact CNN classifiers and detectors tuned for real factory constraints: YOLO-style backbones with CBAM attention, aggressive parameter budgets, and inference measured in frames per second, not just accuracy.",
-    accent: "orange",
-    tags: ["YOLOv8", "CBAM", "Object detection", "Segmentation", "Docker", "Real-time"],
-    stats: [
-      { label: "IV-bag detection", value: "98%+ · 100 FPS" },
-      { label: "False positives", value: "< 1%" },
-      { label: "Wheel-bead segmentation", value: "99%+" },
-      { label: "MNIST < 8k params", value: "99.5%" },
-    ],
-    sections: [
-      {
-        title: "Problem",
-        body: [
-          "Inspection lines process on the order of 100,000 items per day per line. Every model has to fit a latency budget on fixed hardware while keeping false positives below one percent, because each false alarm stops a line.",
-        ],
-      },
-      {
-        title: "Approach",
-        body: [
-          "Start small and earn every parameter. YOLOv8-inspired backbones with CBAM channel and spatial attention were explored as the first LUMINA milestone before moving to transformers; on K|Lens production tasks I used real-time detection and segmentation models with balanced multi-class datasets, confidence-threshold optimization, and systematic ablations.",
-          "Training and deployment are containerized with Docker so the same image runs on the workstation and on the line.",
-        ],
-      },
-      {
-        title: "Results",
-        body: [
-          "IV-bag particle inspection at K|Lens: real-time detection processing 1 TB+ of data across multiple production lines, 98%+ detection accuracy with under 1% false positives at 100 FPS.",
-          "Wheel-bead segmentation for automotive quality control: 99%+ accuracy with under 1% false positives.",
-          "Side quest: MNIST classifier under 8k parameters at 99.5% validation accuracy, a small exercise in extracting accuracy from a tiny budget.",
-        ],
-      },
-      {
-        title: "My contribution",
-        body: [
-          "Developed and deployed the detection and segmentation models at K|Lens GmbH, designed the datasets and train/test splits, and ran the threshold and ablation studies that set the operating points used in production.",
-        ],
-      },
-    ],
-  },
-  {
     id: "xai",
-    index: "04",
+    index: "03",
     title: "Explainable & Robust AI",
     kicker: "Trust, but verify what the model sees",
     summary:
@@ -213,7 +171,7 @@ export const projects: Project[] = [
   },
   {
     id: "mlops",
-    index: "05",
+    index: "04",
     title: "Production ML & AWS",
     kicker: "From dataset to deployed endpoint",
     summary:

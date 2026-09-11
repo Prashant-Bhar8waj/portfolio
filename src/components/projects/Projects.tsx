@@ -18,7 +18,7 @@ export function Projects() {
               Case studies in <span className="serif-accent text-cyan">machine perception.</span>
             </>
           }
-          lead="Five systems, from a thesis that set a new benchmark result to models running on production lines. Each one is presented the way I'd brief a team: the problem, the approach, and what actually happened."
+          lead="Four systems, from a thesis that set a new benchmark result to models running on production lines. Each one is presented the way I'd brief a team: the problem, the approach, and what actually happened."
         />
         <div className="space-y-8 md:space-y-12">
           {projects.map((p, i) => (
