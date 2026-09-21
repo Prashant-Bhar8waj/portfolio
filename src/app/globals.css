@@ -11,6 +11,8 @@
   --color-cyan: #22d3ee;
   --color-violet: #a78bfa;
   --color-orange: #fb923c;
+  --color-red: #a11a1a;
+  --color-green: #2a623d;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -159,4 +161,58 @@ body {
 /* Scrollbar */
 @supports (scrollbar-width: thin) {
   * { scrollbar-width: thin; scrollbar-color: rgba(148, 163, 184, 0.25) transparent; }
+}
+
+/* ---------- Paper theme (the /story long read) ---------- */
+
+.paper {
+  --color-bg: #fffff8;
+  --color-bg-2: #faf9f0;
+  --color-surface: #ffffff;
+  --color-line: rgba(17, 17, 17, 0.14);
+  --color-ink: #111111;
+  --color-ink-2: #333333;
+  --color-muted: #6b6b6b;
+  --color-red: #a11a1a;
+  --color-green: #2a623d;
+  color-scheme: light;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: auto;
+}
+
+html[data-theme="paper"] body {
+  background: #fffff8;
+}
+
+.paper ::selection {
+  background: rgba(161, 26, 26, 0.18);
+  color: #111;
+}
+
+.paper :focus-visible {
+  outline-color: var(--color-red);
+}
+
+.paper .dot {
+  transition:
+    r 0.55s cubic-bezier(0.2, 0.7, 0.2, 1),
+    fill-opacity 0.55s ease,
+    fill 0.55s ease;
+}
+
+@keyframes scrub-enter-right {
+  from { transform: translateX(60%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes details-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes chip-pop {
+  0% { transform: scale(0.6); }
+  60% { transform: scale(1.12); }
+  100% { transform: scale(1); }
 }

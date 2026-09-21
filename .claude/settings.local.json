@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /private/tmp/claude-501/-Users-prashantbhardwaj-Jobs-My-Personel-website/cd2d1645-08a9-4c78-ad52-a6ba49ceb62f/work)",
+      "Bash(curl -sL -A Mozilla/5.0 https://ai-2040.com/ -o /private/tmp/claude-501/-Users-prashantbhardwaj-Jobs-My-Personel-website/cd2d1645-08a9-4c78-ad52-a6ba49ceb62f/work/ai2040.html)",
+      "Bash('/Applications/Brave Browser.app/Contents/MacOS/Brave Browser' --headless=new --disable-gpu --hide-scrollbars --window-size=1440,900 --virtual-time-budget=9000 --screenshot=/private/tmp/claude-501/-Users-prashantbhardwaj-Jobs-My-Personel-website/cd2d1645-08a9-4c78-ad52-a6ba49ceb62f/work/ref-top.png https://ai-2040.com/)",
+      "Bash('/Applications/Brave Browser.app/Contents/MacOS/Brave Browser' --headless=new --disable-gpu --hide-scrollbars --window-size=1440,6000 --virtual-time-budget=12000 --screenshot=/private/tmp/claude-501/-Users-prashantbhardwaj-Jobs-My-Personel-website/cd2d1645-08a9-4c78-ad52-a6ba49ceb62f/work/ref-long.png https://ai-2040.com/)",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}

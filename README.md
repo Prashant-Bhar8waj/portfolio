@@ -32,6 +32,10 @@ Static assets:
 
 Before deploying, set `site.url` in `src/content/site.ts` to the real domain. It feeds the sitemap, robots, Open Graph tags, JSON-LD and the machine-readable endpoints.
 
+## The long version (`/story`)
+
+A second, deliberately quiet page in the style of a long-form essay: cream paper, serif type, one chapter per year from 2017 to 2026, and a sticky dashboard on the right that changes as you scroll (year badge, dot-matrix scene, counters, toolbox chips, progress). Its content lives in `src/content/story.ts`; components are in `src/components/story/`. It shares the repo and deploy with the portfolio but has its own layout and theme via the `(story)` route group.
+
 ## Machine-readable endpoints
 
 - `/llms.txt`: plain-text profile for AI agents and crawlers
@@ -43,10 +47,11 @@ Before deploying, set `site.url` in `src/content/site.ts` to the real domain. It
 
 ```
 src/
-  app/               layout, page, metadata routes (sitemap, robots, llms.txt, resume.json)
+  app/               root layout; (main) portfolio; (story) long read; metadata routes (sitemap, robots, llms.txt, resume.json)
   components/
     hero/            Hero + HeroVisual (canvas point-cloud rig, no Three.js)
     sections/        About, Skills, Journey, Achievements
+    story/           the /story long read: Story, Dashboard, DotMatrix, Counter, Expandables, TocRail
     projects/        Projects list, CaseStudy (tabs), visuals/ (one interactive figure per project)
     layout/          Nav, Footer
     effects/         ScanCursor, DetectionBox

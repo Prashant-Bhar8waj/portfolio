@@ -27,6 +27,9 @@ export function Footer() {
               {n.label}
             </a>
           ))}
+          <Link href="/story" className="hover:text-ink">
+            The long version
+          </Link>
           <a href={`mailto:${site.email}`} className="hover:text-ink">
             Email
           </a>

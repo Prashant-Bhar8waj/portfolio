@@ -18,6 +18,7 @@ export function GET() {
     `- LinkedIn: ${site.links.linkedin}`,
     `- GitHub: ${site.links.github}`,
     `- Résumé (JSON): ${site.url}/resume.json`,
+    `- Long-form timeline: ${site.url}/story`,
     "",
     "## Projects",
     "",
