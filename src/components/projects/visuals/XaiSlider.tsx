@@ -9,7 +9,8 @@ type Mode = "gradcam" | "adversarial";
 
 /**
  * Before/after comparison: drag (or use arrow keys on) the handle to reveal an explanation map
- * or an adversarial perturbation over the original image. Overlays are illustrative.
+ * or an adversarial perturbation over the original image (a tabby cat, the class the PGD attacks in the
+ * Model_Explainability repo targeted). Overlays are illustrative.
  */
 export function XaiSlider() {
   const [pos, setPos] = useState(50);
@@ -20,25 +21,25 @@ export function XaiSlider() {
     <figure className="relative">
       <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-bg/60 select-none">
         {/* base image */}
-        <Image src={asset("/sketch.jpg")} alt="" fill sizes="(min-width: 1024px) 560px, 90vw" className="object-cover" />
+        <Image src={asset("/xai-input.jpg")} alt="" fill sizes="(min-width: 1024px) 560px, 90vw" className="object-cover" />
 
         {/* processed layer, clipped */}
         <div className="absolute inset-0" style={{ clipPath: `inset(0 0 0 ${pos}%)` }} aria-hidden>
-          <Image src={asset("/sketch.jpg")} alt="" fill sizes="(min-width: 1024px) 560px, 90vw" className={cn("object-cover", mode === "gradcam" ? "grayscale contrast-125 brightness-75" : "")} />
+          <Image src={asset("/xai-input.jpg")} alt="" fill sizes="(min-width: 1024px) 560px, 90vw" className={cn("object-cover", mode === "gradcam" ? "grayscale contrast-125 brightness-75" : "")} />
           {mode === "gradcam" ? (
             <>
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(ellipse 26% 22% at 50% 30%, rgba(251,146,60,0.95), rgba(251,146,60,0.7) 30%, rgba(167,139,250,0.55) 55%, rgba(34,211,238,0.35) 75%, rgba(34,211,238,0.05) 100%)",
+                    "radial-gradient(ellipse 36% 30% at 47% 42%, rgba(251,146,60,0.95), rgba(251,146,60,0.7) 30%, rgba(167,139,250,0.55) 55%, rgba(34,211,238,0.35) 75%, rgba(34,211,238,0.05) 100%)",
                   mixBlendMode: "hard-light",
                 }}
               />
               <div
                 className="absolute inset-0"
                 style={{
-                  background: "radial-gradient(ellipse 30% 24% at 62% 66%, rgba(34,211,238,0.35), transparent 70%)",
+                  background: "radial-gradient(ellipse 22% 18% at 48% 66%, rgba(34,211,238,0.35), transparent 70%)",
                   mixBlendMode: "screen",
                 }}
               />

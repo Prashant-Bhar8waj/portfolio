@@ -27,7 +27,7 @@ Everything personal lives in `src/content/`. Components read from these files, s
 Static assets:
 
 - `public/prashant.jpg`: portrait used in About
-- `public/sketch.jpg`: drawing used in the explainability slider
+- `public/xai-input.jpg`: input photo used in the explainability slider
 - `public/og.png`: Open Graph preview image
 
 Before deploying, set `site.url` in `src/content/site.ts` to the real domain. It feeds the sitemap, robots, Open Graph tags, JSON-LD and the machine-readable endpoints.

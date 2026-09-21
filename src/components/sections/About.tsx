@@ -90,12 +90,12 @@ export function About() {
                   )}
                   style={{
                     background:
-                      "radial-gradient(ellipse 34% 26% at 42% 24%, rgba(251,146,60,0.95), rgba(251,146,60,0.55) 35%, rgba(167,139,250,0.45) 60%, rgba(34,211,238,0.25) 80%, transparent 100%)",
+                      "radial-gradient(ellipse 34% 24% at 50% 34%, rgba(251,146,60,0.95), rgba(251,146,60,0.55) 35%, rgba(167,139,250,0.45) 60%, rgba(34,211,238,0.25) 80%, transparent 100%)",
                     mixBlendMode: "hard-light",
                   }}
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-bg/90 to-transparent px-4 pb-3 pt-10 font-mono text-[10px] tracking-widest text-muted">
-                  <span>{mode === "raw" ? "input · 1600×1200" : mode === "features" ? "dinov2 · block 3" : "foreground attn"}</span>
+                  <span>{mode === "raw" ? "input · rgb" : mode === "features" ? "dinov2 · block 3" : "foreground attn"}</span>
                   <span>{mode === "raw" ? "" : "illustrative"}</span>
                 </div>
               </div>
